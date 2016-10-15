@@ -7,6 +7,34 @@
 local composer = require( "composer" )
 local scene = composer.newScene()
 
+local Group = {}
+Group.__index = Group
+function Group.new(team_name)
+	local team = setmetatable({}, Group)
+	team.list = {}
+	team.score = 0
+	team.name = team_name
+	team.badges = {}
+	return team
+end
+
+--add a name to the Group
+--function Group.add_member(team, name)
+--	team.list.insert(team.list, name)
+--	return team.list
+--end
+
+--increase the score of the group
+function Group.increase_score(team, number)
+	team.score = team.score + number
+	return team.score
+end
+
+a = Group.new("Test1")
+print(a.name)
+a.increase_score(a, 10)
+print(a.score)
+
 score = 20
 local Player = {}
 Player.__index = Player
