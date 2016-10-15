@@ -6,6 +6,7 @@
 
 local composer = require( "composer" )
 local scene = composer.newScene()
+local widget = require("widget")
 
 local Group = {}
 Group.__index = Group
@@ -59,7 +60,11 @@ function Player.level_up()
 	end
 end
 
+
+
+
 function scene:create( event )
+
 	local sceneGroup = self.view
 
 	-- Called when the scene's view does not exist.
@@ -80,6 +85,25 @@ P1 = Player.new('Arnold','@gmail.com')
 P1.score_increase(P1,50)
 P1.level_up()
 print(P1.name)
+
+	local function handleButtonEvent( event )
+
+    if ( "ended" == event.phase ) then
+        print( "Button was pressed and released" )
+    end
+end
+
+-- Create the widget
+local button1 = widget.newButton(
+    {
+        width = display.contentwidth,
+		height = 60,
+		defaultFile = "button.png",
+        id = "button1",
+        onEvent = handleButtonEvent
+    }
+)
+
 	local newTextParams = { text = "Player Level: ",  
 						x = display.contentCenterX + 10, 
 						y = title.y + 215, 
