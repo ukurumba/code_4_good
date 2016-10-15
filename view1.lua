@@ -98,17 +98,19 @@ local button1 = widget.newButton(
     {
         width = display.contentwidth,
 		height = 60,
+		x = display.contentCenterX,
+		y = display.contentCenterY,
 		defaultFile = "button.png",
         id = "button1",
         onEvent = handleButtonEvent
     }
 )
 
-	local newTextParams = { text = "Player Level: ",  
-						x = display.contentCenterX + 10, 
-						y = title.y + 215, 
+	local newTextParams = { text = P1.name .. "   " .. P1.level,  
+						x = display.contentCenterX, 
+						y = display.contentCenterY, 
 						width = 310, height = 310, 
-						font = native.systemFont, fontSize = 14, 
+						font = native.systemFont, fontSize = 30, 
 						align = "center" }
 	local summary = display.newText( newTextParams )
 	summary:setFillColor( 0 ) -- black
